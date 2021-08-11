@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tüm elemanlar</title>
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+        
+        *{
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        body{
+            background-image:url(https://picsum.photos/2000/2000);
+            background-size:cover;
+        }
+
+        #sayfa{
+        width: 500px;
+        margin:auto 400px;
+        background: rgba( 0, 0, 0, 0.85 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 4.0px );
+        -webkit-backdrop-filter: blur( 4.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        padding:20px;
+        height: 600px;
+        text-align: center;
+        color:white;
+        }
+
+        label{
+        display:block;
+        margin-top:5px;
+
+        }
+
+        input{
+        border:solid 2px #1B9CFC;
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        height:30px;
+        width:70%;
+        border-radius: 40px;
+        transition: 0.2s ease-in;
+        color:white;
+
+        }
+
+        input:focus{
+        width:80%;
+        border:solid 2px #55E6C1;
+
+        }
+
+        button{
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        border:solid 2px #55E6C1;
+        box-sizing: border-box;
+        height:50px;
+        width:40%;
+        border-radius: 40px;
+        color:white;
+        cursor: pointer;
+    
+        }
+
+        button:hover{
+            background-color: #55E6C1;
+        }
+
+        table{
+        background: none;
+        margin: auto;
+        width: 100%;
+        color:white;
+        border-collapse: collapse;
+
+        }
+
+        td,th{
+        border:1px solid #55E6C1;
+        border-spacing: 0px;
+        margin: 0px;
+
+        }
+
+        .divs{
+            margin:auto 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background: rgba( 0, 0, 0, 0.85 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4.0px );
+            -webkit-backdrop-filter: blur( 4.0px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            overflow-x: hidden;
+            padding-top: 20px;
+            margin-right: 100px;
+        }
+
+        #logo{
+            background-color: #818181;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            height:100px;
+            width:200px;
+            border-radius: 10px;
+        }
+
+        #logo:hover{
+            background-color: #f1f1f1;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a{
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width:100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover{
+            color: #f1f1f1;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="sidenav">  
+        <div id="logo">
+            <img style="width:100px;" src="izaydas.png" alt="İZAYDAŞ">
+        </div>  
+        <a href="tum-elemanlar.html">Elemanları Görüntüle</a>
+        <a href="eleman-ekle.html">Eleman Ekle</a>
+        <a href="eleman-sil.html">Eleman Sil</a>
+        <a href="eleman-ara.html">Eleman Ara</a>        
+        <a href="kullanıcı.html">Çıkış</a>
+    </div>
+    
+    <div id="sayfa">
+
+        <label style="margin-top:60px;" for="bölümler">Birim Seçin:</label>
+        <input list="birimler" name="birim" id="birim">
+
+        <datalist id="birimler">
+        <option value="TÜMÜ">
+        <option value="PAZARLAMA">
+        <option value="MALİ İŞLER">
+        <option value="İDARİ İŞLER">
+        <option value="SATINALMA">
+        <option value="İŞLETME">
+        <option value="DÜZ. DEP. ALAN.">
+        <option value="TEKNİK HİZMETLER">
+        </datalist>
+
+        <button id="birim-btn">GÖSTER</button>
+
+        <table id="liste"></table>
+
+    </div>
+
+        <script>
+
+            let myLeads = [];
+
+            const birimEl = document.getElementById("birim");
+            const birimBtn = document.getElementById("birim-btn")
+
+            const liste=document.getElementById("liste");
+            const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+            //kayıtlıları kapatıp açtıktan sonra hala gösterir
+            if(leadsFromLocalStorage){        
+                myLeads = leadsFromLocalStorage;
+                render(myLeads);
+
+            }
+
+            //tabloyu gösterir
+            function render(leads){
+                let listItems = `
+                    <tr>
+                        <th>Adı Soyadı</th>
+                        <th>Çalıştığı Birim</th>
+                    </tr>
+                `;
+    
+                for (let i = 0; i < leads.length; i+=2) {    
+                    if(birimEl.value == "TÜMÜ" || birimEl.value == leads[i+1]){
+
+                        listItems += `
+                        <tr>
+                            <td>
+                                ${leads[i]}
+                            </td>
+                            <td>
+                                ${leads[i+1]}
+                            </td>
+                        </tr>
+                        `;
+                    }
+                }
+
+                liste.innerHTML = listItems;
+
+            }
+
+            birimBtn.addEventListener("click", function(){
+                render(myLeads);
+                birimEl.value="";
+                birimEl.focus();
+            });
+                
+        </script>
+
+    </body>
+</html>
+
+ 

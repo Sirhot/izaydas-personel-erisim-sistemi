@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eleman Ekle</title>
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+        
+        *{
+            font-family: 'Noto Sans', sans-serif;
+        }
+        
+        body{
+            background-image:url(https://picsum.photos/2000/2000);
+            background-size:cover;
+        }
+
+        #sayfa{
+        width: 500px;
+        margin:auto 400px;
+        background: rgba( 0, 0, 0, 0.85 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 4.0px );
+        -webkit-backdrop-filter: blur( 4.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        padding:20px;
+        height: 100%;
+        text-align: center;
+        color:white;
+        }
+
+        label{
+        display:block;
+        margin-top:5px;
+
+        }
+
+        input{
+        border:solid 2px #1B9CFC;
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        height:30px;
+        width:70%;
+        border-radius: 40px;
+        transition: 0.2s ease-in;
+        color:white;
+
+        }
+
+        input:focus{
+        width:80%;
+        border:solid 2px #55E6C1;
+
+        }
+
+        button{
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        border:solid 2px #55E6C1;
+        box-sizing: border-box;
+        height:50px;
+        width:40%;
+        border-radius: 40px;
+        color:white;
+        cursor: pointer;
+    
+        }
+
+        button:hover{
+            background-color: #55E6C1;
+        }
+
+        .divs{
+            margin:auto 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background: rgba( 0, 0, 0, 0.85 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4.0px );
+            -webkit-backdrop-filter: blur( 4.0px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            overflow-x: hidden;
+            padding-top: 20px;
+            margin-right: 100px;
+        }
+
+        #logo{
+            background-color: #818181;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            height:100px;
+            width:200px;
+            border-radius: 10px;
+        }
+
+        #logo:hover{
+            background-color: #f1f1f1;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a{
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width:100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover{
+            color: #f1f1f1;
+        }
+
+        .check{
+            width:16px;
+            height: 16px;
+            margin:0;
+            padding:0;
+            transition: none;
+            border:none;
+        }
+        .check:focus{
+            width:16px;
+        }
+
+        .labelcheck{
+            display:inline;
+            margin:0;
+            padding:0;
+        }
+
+        #aciklama{
+            border:solid 2px #1B9CFC;
+            background: none;
+            outline: none;
+            padding: 10px;
+            margin:20px;
+            height:100px;
+            width:70%;
+            border-radius: 40px;
+            transition: 0.2s ease-in;
+            color:white;
+        }
+
+        #aciklama:focus{
+        width:80%;
+        border:solid 2px #55E6C1;
+
+        }
+
+        input[type="submit"]{
+            background: none;
+            text-align: center;
+            outline: none;
+            padding: 10px;
+            margin:20px;
+            border:solid 2px #55E6C1;
+            box-sizing: border-box;
+            height:50px;
+            width:40%;
+            border-radius: 40px;
+            color:white;
+            cursor: pointer;
+            transition: none;
+        }
+
+        input[type="submit"]:hover{
+            background-color: #55E6C1;
+            
+        }
+
+    </style>
+
+    </head>
+    <body>
+        <div class="sidenav">    
+            <div id="logo">
+                <img style="width:100px;" src="izaydas.png" alt="İZAYDAŞ">
+            </div>  
+            <a href="tum-elemanlar.html">Elemanları Görüntüle</a>
+            <a href="eleman-ekle.html">Eleman Ekle</a>
+            <a href="eleman-sil.html">Eleman Sil</a>
+            <a href="eleman-ara.html">Eleman Ara</a>        
+            <a href="kullanıcı.html">Çıkış</a>
+        </div>
+    
+        <div id="sayfa">
+            
+            <div class="divs">
+                <h2 style="margin-top:60px; margin-bottom:50px;">Eleman Ekle</h2>
+                
+                <label>Adı Soyadı:</label>    
+                <input list="adlar" name="ad" id="ad">
+
+                <datalist id="adlar">
+                <option value="ABDULHALİM ÇAKIROĞLU">
+                <option value="ABDÜLKADİR ATAŞ">
+                <option value="ADEM KARAMAN">
+                <option value="ADIL YAĞUZDOGAN">
+                <option value="AHİNAY IŞIK">
+                <option value="AHMET ALTAŞ">
+                <option value="AHMET AYDIN">
+                <option value="AHMET CANDANOĞLU">
+                <option value="AHMET ÇELİK">
+                <option value="AHMET ÖZGÖREN">
+                <option value="ALİ DEMİR">
+                <option value="ALİ KARAKUŞ">
+                <option value="ALİ KAYHAN">
+                <option value="ALİ OKUMAN">
+                <option value="ALP TUNCEL">
+                <option value="ANIL KAYA">
+                <option value="ARZU ULUTAŞ SOYTÜRK">
+                <option value="ASİYE KARANLIK ÇAKAR">
+                <option value="ASUMAN KURT BAŞAVCI">
+                <option value="AYDIN BAŞER">
+                <option value="AYFER ÇALIK NEFESOĞLU">
+                <option value="AYHAN KÖKTÜRK">
+                <option value="AYKUT EFE">
+                <option value="AYNUR YAMA">
+                <option value="AYSUN SARAÇ">
+                <option value="BAHADIR KATICA">
+                <option value="BAHATTİN FATİH KESKİN">
+                <option value="BARIŞ ŞAHİN">
+                <option value="BAYRAM KARAKUŞ">
+                <option value="BEHLÜL ÇELİKÖZ">
+                <option value="BERTAN GÖRHAN">
+                <option value="BILGE ADIR GIRGIN">
+                <option value="BİLAL BAYRAM">
+                <option value="BİRCAN SOYSAL">
+                <option value="BURAK KAYABAŞI">
+                <option value="BURAK KUTLUER">
+                <option value="BURAK UZUNER">
+                <option value="BURÇAK BURÇİN ONAT">
+                <option value="BURHAN MERTOĞLU">
+                <option value="BÜLENT AKYÜZ">
+                <option value="BÜLENT DURAN">
+                <option value="BÜLENT GÜNEŞ">
+                <option value="BÜLENT ÖZDEMİR">
+                <option value="BÜLENT YANAR">
+                <option value="CAFER ALTINTAŞ">
+                <option value="CAVİT YILDIZ">
+                <option value="CEM ERGEZER">
+                <option value="CEMAL SAVAŞ">
+                <option value="CEMİL AKSU">
+                <option value="CEMİL YILDIRIMER">
+                <option value="CESİM AYDIN">
+                <option value="CEVAT AKBULUT">
+                <option value="CEYHUN KUZU">
+                <option value="CİHAN ACAR">
+                <option value="COŞKUN ASLAN">
+                <option value="DAVUT AY">
+                <option value="DOĞUŞ TÜRKDOĞAN DEMİR">
+                <option value="ELİF BAŞYİĞİT">
+                <option value="ELİF OLGUN">
+                <option value="EMİN ERDEM">
+                <option value="ENDER AKDENİZ">
+                <option value="ENGİN AYSU">
+                <option value="ERCAN AZAK">
+                <option value="ERDEM ÖCAL">
+                <option value="ERDİNÇ ÖNAL">
+                <option value="ERGİN UZUN">
+                <option value="ERGÜN ANKAZ">
+                <option value="ERGÜN SAVAŞ">
+                <option value="ERKAN AKDAĞ">
+                <option value="ERKAN BAYSAL">
+                <option value="ERKAN BULUT">
+                <option value="ERKAN KARATAŞ">
+                <option value="ERKAN KURHAN">
+                <option value="ERKAN ÖZÖN">
+                <option value="ERKAN YILDIRIM">
+                <option value="EROL ASLAN">
+                <option value="EROL GÖÇENLER">
+                <option value="EROL MEMİŞ">
+                <option value="EROL ŞAR">
+                <option value="ERSİN ELYEĞİT">
+                <option value="ERSOY KULU">
+                <option value="ESRA UĞURLU">
+                <option value="ETEM YILMAZ">
+                <option value="EVSEN KOSEM">
+                <option value="EYÜP KAYA">
+                <option value="FAHRETTİN ALP">
+                <option value="FAHRİ DENLİ">
+                <option value="FATIMA AKBOLAT">
+                <option value="FATİH RAMAZANOĞLU">
+                <option value="FATMA ÇELİK">
+                <option value="FERAMUZ ÇELİK">
+                <option value="FERHAT AYDIN">
+                <option value="FERHAT KALKAVAN">
+                <option value="FERHAT YILDIZ">
+                <option value="FERİK BALKİ">
+                <option value="FETHİ ÖZDEMİR">
+                <option value="FETİ TUTAR">
+                <option value="FİKRET KARA">
+                <option value="FİKRET SEZEN">
+                <option value="FİKRİ AY">
+                <option value="FURKAN ÖZTÜRK">
+                <option value="GAFFAR ÇAMUR">
+                <option value="GAMZE GOZDE TURKERI GULSUM">
+                <option value="GANİ ÇAPRAZ">
+                <option value="GÖKHAN TİLKİ">
+                <option value="GÜLAY İNOĞLU">
+                <option value="GÜLAY KARA YÜKSEL">
+                <option value="GÜNEY DİNÇ">
+                <option value="GÜNGÖR ÖZDEMİR">
+                <option value="GÜRKAN SAZ">
+                <option value="HAKAN BUGAN">
+                <option value="HAKAN NURİ AVCI">
+                <option value="HAKAN UYAR">
+                <option value="HALİL İBRAHİM TÜRK">
+                <option value="HALİL YAZICIOĞLU">
+                <option value="HALİS ÖNER">
+                <option value="HALİT ELAGÖZ">
+                <option value="HALUK ÖZTURKAN">
+                <option value="HARUN KILIÇ">
+                <option value="HARUN ÖZTÜRK">
+                <option value="HASAN DEMİRHAN">
+                <option value="HAŞİM OKUTKAN">
+                <option value="HAYRETTİN DEMİRER">
+                <option value="HAYRETTİN DUMAN">
+                <option value="HELİN YILDIRIM ESENLİK">
+                <option value="HÜSEYİN ÇELİK">
+                <option value="HÜSEYİN EROL">
+                <option value="HÜSEYİN ONUR">
+                <option value="HÜSEYİN ÖKSÜZ">
+                <option value="HÜSEYİN YEŞİL">
+                <option value="İBRAHİM AKBUĞA">
+                <option value="İBRAHİM BAŞYİĞİT">
+                <option value="İBRAHİM BAYRAK">
+                <option value="İBRAHİM CEM OKANALP">
+                <option value="İBRAHİM ŞAHİN">
+                <option value="İBRAHİM TAŞ">
+                <option value="İDRİS DURMAZ">
+                <option value="İDRİS ERGÜN">
+                <option value="İSKENDER AKGÜL">
+                <option value="İSMAİL AKBAŞ">
+                <option value="İSMAİL AYDIN">
+                <option value="İSMAİL HAKKI ÜSTÜN">
+                <option value="İSMAİL ŞAHİN">
+                <option value="İSMAİL ULUDAĞ">
+                <option value="KADİR AKBAŞ">
+                <option value="KADİR ÖZTÜRK">
+                <option value="KAZIM ATALAY">
+                <option value="KEMAL USTA">
+                <option value="KENAN HENDEN">
+                <option value="KENAN IYIDOGAN">
+                <option value="KISMET ÖNEN">
+                <option value="MAHMUT KARAASLAN">
+                <option value="MAHMUT KILDIZE">
+                <option value="MEHMET BAYRAM">
+                <option value="MEHMET ÇELİK">
+                <option value="MEHMET EMİN AYDEMİR">
+                <option value="MEHMET KURNAZ">
+                <option value="MEHMET NURİ ÜNSAL">
+                <option value="MEHMET SOLMAZ">
+                <option value="MEHMET ŞAHİN">
+                <option value="MEHMET YILMAZ">
+                <option value="MESUT BAŞARIR">
+                <option value="METİN ÖZÇETİN">
+                <option value="MUHAMMED KARA">
+                <option value="MUHAMMET ÇALIŞ">
+                <option value="MUHAMMET ENES AKBULUT">
+                <option value="MUHAMMET SARAÇ">
+                <option value="MUHARREM ALACI">
+                <option value="MURAT ARSLAN">
+                <option value="MURAT ATAGAN">
+                <option value="MURAT BAŞTÜRK">
+                <option value="MURAT BAYRAM">
+                <option value="MURAT KARAASLAN">
+                <option value="MURAT KILIÇ">
+                <option value="MURAT KURT">
+                <option value="MURAT ÖZKAN AYTAÇ">
+                <option value="MURAT RECEP AKAR">
+                <option value="MUSA BEKİL">
+                <option value="MUSTAFA BEKTAŞ">
+                <option value="MUSTAFA CİVELEK">
+                <option value="MUSTAFA ÇİFÇİ">
+                <option value="MUSTAFA DEMİR">
+                <option value="MUSTAFA DEMİRTAŞ">
+                <option value="MUSTAFA DİLAVER">
+                <option value="MUSTAFA HAKAN ELMAS">
+                <option value="MUSTAFA KAYA">
+                <option value="MUSTAFA ÖZTÜRK">
+                <option value="MUSTAFA SİRMEN">
+                <option value="MUSTAFA ŞAKAR">
+                <option value="MUSTAFA YILDIRIM">
+                <option value="NAİL BALCI">
+                <option value="NAMIK KAYA">
+                <option value="NEBİ KILIÇ">
+                <option value="NECATİ BOSTAN">
+                <option value="NİZAMETTİN KARADUMAN">
+                <option value="NİZAMETTİN ÖZTÜRK">
+                <option value="NİZAMETTİN SİNAN BİNBAY">
+                <option value="NURHAN ORGAN KELEŞ">
+                <option value="NURKAN KOLAY">
+                <option value="NURULLAH DURAL">
+                <option value="NUSRET KARAKAYA">
+                <option value="OKAN ÖZ">
+                <option value="ONUR ULUDAĞ">
+                <option value="ORAL TEKYAZ">
+                <option value="ORHAN AKARSU">
+                <option value="ORHAN KORKMAZ">
+                <option value="ORHAN KURTOĞLU">
+                <option value="ÖMER FERKAN KEMİK">
+                <option value="ÖNDER KORKMAZ">
+                <option value="ÖZCAN ŞAKAR">
+                <option value="ÖZGE GÖKDEN">
+                <option value="ÖZGÜR TORAMAN">
+                <option value="ÖZKAN ÖZKANLI">
+                <option value="ÖZLEM ERKAL DİZMAN">
+                <option value="ÖZNUR DİNÇ ATASOY">
+                <option value="PINAR ATABAY">
+                <option value="RAMAZAN KARABOĞA">
+                <option value="RECEP ERGAM CİVELEK">
+                <option value="RECEP ERMİŞ">
+                <option value="RECEP KARAGÖZ">
+                <option value="RECEP KARTAL">
+                <option value="RECEP ŞİNASİ YILDIZ">
+                <option value="RECEP ÜRETİR">
+                <option value="RESUL SAVUR">
+                <option value="RIDVAN ŞAHİN">
+                <option value="SACETTİN KULA">
+                <option value="SALİH AYHAN">
+                <option value="SALİH DEVECİ">
+                <option value="SALİH KARADENİZ">
+                <option value="SALİH ORHAN GÜNCAN">
+                <option value="SALİH ŞAHİN">
+                <option value="SAVAŞ AKPOLAT">
+                <option value="SEDAT DİNÇ">
+                <option value="SELÇUK ASLAN">
+                <option value="SELÇUK SERİN">
+                <option value="SELÇUK YILDIRIM">
+                <option value="SELMAN ŞEKERSOY">
+                <option value="SERKAN ERGÜL">
+                <option value="SERKAN YOLDADURMAZ">
+                <option value="SEVİLAY DEĞER">
+                <option value="SEYFETTİN CEYHAN">
+                <option value="SEZGİN ÇAKAR">
+                <option value="SEZGİN DEMİRÖZ">
+                <option value="SEZGİN ÜZMEZ">
+                <option value="SİNAN AYAZ">
+                <option value="SONER TURAN">
+                <option value="SONGÜL GENÇ">
+                <option value="SUAT ŞIK">
+                <option value="SUNA ÖZDENİZER">
+                <option value="ŞAHAN DEDE">
+                <option value="ŞENAY ÇINAR">
+                <option value="ŞENOL ALTIN">
+                <option value="ŞEVKET KARAASLAN">
+                <option value="ŞÜKRÜ KAYA">
+                <option value="TALİP BURNAZ">
+                <option value="TARIK ANLAYAN">
+                <option value="TAYFUN KARA">
+                <option value="TEKİN AKYOL">
+                <option value="TUĞBA RAKAN">
+                <option value="TUNCAY AKÇAY">
+                <option value="TURAN ÇAKAR">
+                <option value="UMUR GÜRDAL">
+                <option value="ÜMİT GENÇ">
+                <option value="ÜMİT ÖRNEK">
+                <option value="VEDAT AKTAŞ">
+                <option value="YALÇIN AKKUŞ">
+                <option value="YASİN ÖZDEMİR">
+                <option value="YAŞAR TAŞDEMİR">
+                <option value="YAVUZ TEKMİL">
+                <option value="YILDIRAY DELİOĞLU">
+                <option value="YUNUS DURGUN">
+                <option value="YUNUS EMRE AYVAZ">
+                <option value="YUNUS ÖZDİL">
+                <option value="YUSUF KESİM">
+                <option value="YUSUF YAZICI">
+                <option value="YÜKSEL ARI">
+                <option value="ZAFER GÜDÜK">
+                <option value="ZAFER KAYI">
+                <option value="ZAFER MACİT">
+                <option value="ZAFER SERT">
+                <option value="ZAFER YALÇIN">
+                <option value="ZEKERİYA SUBAŞI">
+                <option value="ZEKERİYE ALMAZ">
+                <option value="ZEYNEP SARI">  
+                </datalist>
+                
+                <label>Erişim Adı:</label>   
+                <input list="erisimler" name="erisim" id="erisim">
+
+                <datalist id="erisimler">
+                <option value="KLASÖR">
+                </datalist>
+
+                <label>Klasör Alt Erişimi 1:</label>   
+                <input list="erisimler1" name="erisim1" id="erisim1">
+
+                <datalist id="erisimler1">
+                <option value="0-yeni ptm Çalışması">
+                <option value="2-2012-atık yağ takip">
+                <option value="acil alım takip tablosu">
+                <option value="analiz tablosu 2011">
+                <option value="araç bakım">
+                <option value="atık besleme">
+                <option value="atık kabul">
+                <option value="atık programları">
+                <option value="Aylık performans grafikleri  (Md)">
+                <option value="Aylık performans grafikleri  (şef Sorum.)">
+                <option value="Bakım">
+                <option value="Bakım eys">
+                <option value="Bakım genel">
+                <option value="Bilgi güvenliği">
+                <option value="Bilgi teknolojileri">
+                <option value="Biyogaz">
+                <option value="boys">
+                <option value="Çevre yönetim sistemi">
+                <option value="depolama atık verileri">
+                <option value="Deponi">
+                <option value="Desktoplmg">
+                <option value="Destek hizmetler">
+                <option value="Duyurular">
+                <option value="e-fatura">
+                <option value="e-kütüphane">
+                <option value="Enerji">
+                <option value="Enerji yönetim sistemi">
+                <option value="e-resmi Arşivi">
+                <option value="eys">
+                <option value="eys2">
+                <option value="fıçı sahası 2011">
+                <option value="fkAritma">
+                <option value="Genel hizmetler">
+                <option value="Geri dönüşüm">
+                <option value="Geri kazanım">
+                <option value="Günlük izle raporları">
+                <option value="Güvenlik">
+                <option value="Hafriyat">
+                <option value="Halkla ilişkiler">
+                <option value="İç Bülten">
+                <option value="İhale ve istihkak sözleşmeleri">
+                <option value="İhale videoları">
+                <option value="İmha videoları">
+                <option value="İnsan kaynakları">
+                <option value="İsg genel">
+                <option value="İSG kurul raporları">
+                <option value="İsg ofis">
+                <option value="işletme verileri">
+                <option value="izaydaş akademi">
+                <option value="izaydaş aylık faliyet raporları">
+                <option value="izaydaş süreç performans takip">
+                <option value="kamera görüntüleri">
+                <option value="kka bertarafı">
+                <option value="kontrol odası">
+                <option value="kurumsal gelişim projesi">
+                <option value="laboratuvar genel">
+                <option value="laboratuvar ofis">
+                <option value="malzeme güvenlik bilgi formları">
+                <option value="mekanik bakım">
+                <option value="merkim sahası ön işlem">
+                <option value="meteorolojik veriler">
+                <option value="motat">
+                <option value="mudurler koordinasyon">
+                <option value="muhaberat">
+                <option value="muhasebe">
+                <option value="mukayese değerlendirme">
+                <option value="mukayese değerlendirme 2012">
+                <option value="muteahhit takip">
+                <option value="müşteri hizmetleri">
+                <option value="nakliye bilgileri">
+                <option value="nöbetci amirlik">
+                <option value="numune kabul">
+                <option value="özel kalem">
+                <option value="paylasimaxapta">
+                <option value="pazarlama">
+                <option value="personel">
+                <option value="proje şefliği">
+                <option value="projeler">
+                <option value="r1 analiz talepleri">
+                <option value="revir">
+                <option value="sam">
+                <option value="satın alma">
+                <option value="sözleşmeler">
+                <option value="strellizasyon atık verileri">
+                <option value="strellizasyon tablosu">
+                <option value="sunumlar">
+                <option value="şablonlar">
+                <option value="takas">
+                <option value="taranan dosyalar">
+                <option value="teknik  şartnameler">
+                <option value="telsiz çevrimleri">
+                <option value="tesis dışı araç kazaları">
+                <option value="toplantı notları">
+                <option value="uygunsuzluk formu">
+                <option value="yakma">
+                <option value="yakma atık verileri">
+                <option value="yönetim">
+                </datalist>
+                
+                <label>Klasör Alt Erişimi 2:</label>   
+                <input list="erisimler2" name="erisim2" id="erisim2">
+
+                <datalist id="erisimler2">
+                <option value="İnsan Kaynakları">
+                <option value="EBYS Arşiv">
+                <option value="Laboratuvar">
+                <option value="Satınalma">
+                <option value="İzin Formu Rapor">
+                <option value="Genel Rapor">
+                <option value="LabDeneme">
+                <option value="Satınalma Rapor Departman">
+                <option value="Atık Kabul">
+                <option value="Müşteri Hizmetleri">
+                <option value="İzin Talep Formu">
+                <option value="Genel Veriler">
+                <option value="Bilgi İşlem İş İstek Formu">
+                <option value="Bilgi İşlem Rapor">
+                <option value="Satınalma Yeni">
+                <option value="Satınalma (Hizmet Alım)">
+                <option value="NACSOFT Destek">
+                <option value="Bertaraf Bakanlık Raporu">
+                <option value="Bertaraf Belge Arşivi">
+                <option value="Bertaraf Döküman Arşivi">
+                <option value="Günlük Gelecek Atıklar">
+                <option value="Hafriyat Rapor">
+                <option value="Muhasebe Raporu">
+                <option value="Bertaraf Belge Arşivi Nakliye">
+                <option value="Vardiya Defteri">
+                <option value="Vardiya Rapor">
+                <option value="Tutanak Rapor">
+                <option value="Günlük Beklenen Atıklar">
+                <option value="Satınalma Genel Rapor">
+                <option value="Satınalma Rapor(Mal/Hizmet)Alım turu">
+                <option value="Satınalma Talep Test">
+                <option value="fiyattekliftest">
+                <option value="İdari İşler">
+                <option value="Erp İş Talep">
+                </datalist>
+
+                <label>Klasör Alt Erişimi 3:</label>   
+                <input list="erisimler3" name="erisim3" id="erisim3">
+
+                <datalist id="erisimler3">
+                <option value="Vardiya İçin İzin Formu">
+                <option value="Yıllık İzin Formu">
+                <option value="Mazeret İzin Formu">
+                <option value="Görevli İzin Formu">
+                <option value="Fazla Mesai Formu">
+                <option value="Raporlar">
+                <option value="Deponi Laboratuvar Raporu">
+                <option value="Numune Kayıt">
+                <option value="Lab Raporlar">
+                <option value="Atık Kabul Lab Raporu">
+                <option value="Müşteri Hizmetleri Lab Raporu">
+                <option value="Laboratuvar Rapor">
+                <option value="İşletme Lab Raporu">
+                <option value="Geri Kazanım Lab Rapor">
+                <option value="Deponi Lab Raporu">
+                <option value="İdari İşler Lab Raporu">
+                <option value="Satınalma Lab Raporu">
+                <option value="LaboratuvarPers Raporu">
+                <option value="Parametre Sorgulama">
+                <option value="Analiz Maliyetleri">
+                <option value="Parametre Ekleme">
+                <option value="Satınalma Firmalar">
+                <option value="Satınalma Talep Formu">
+                <option value="Talep Listesi">
+                <option value="Teslim Formu">
+                <option value="Genel Rapor Muk.">
+                <option value="Genel Rapor Tal.">
+                <option value="İzin Formu Rapor">
+                <option value="Rapor Fatura">
+                <option value="Talep Düzenle">
+                <option value="RaporHizmet">
+                <option value="Revizyon Randevu">
+                <option value="BBF Kayit">
+                <option value="Bertaraf Formu">
+                <option value="Kantar Fiş Düzenleme">
+                <option value="Bertaraf Belge Arşivi(Atık Kabul)">
+                <option value="Bertaraf Belge Arşivi Admin">
+                <option value="Firma Atık Dökümü">
+                <option value="Randevu Programı">
+                <option value="Randevu Arşiv">
+                <option value="Randevu Revizyon Raporu">
+                <option value="Kapasite Kayıt Formu">
+                <option value="Kapasite Tanımları">
+                <option value="Randevu Stok Raporu">
+                <option value="Menü">
+                <option value="Menü Arşiv">
+                <option value="Envanter Raporu">
+                <option value="Randevu Durum Raporu">
+                <option value="Atık Kodları">
+                <option value="Kantar Düzelt Rapor">
+                <option value="Tutanak Rapor">
+                <option value="Fiyat Teklif">
+                <option value="Firma Kayıt">
+                <option value="Firma Atık Durumu">
+                <option value="Özel Firma Fiyat Tanımlama">
+                <option value="Özel Firma Fiyatları">
+                <option value="Randevu Arşiv">
+                <option value="Randevu Sorgulama">
+                <option value="Mukayese">
+                <option value="Nakliye Talep Formu">
+                <option value="Bertaraf Fiyat Güncelleme">
+                <option value="Firma Atik Dökümü">
+                <option value="Randevu / Revizyon Talep">
+                <option value="Randevu Talep">
+                <option value="EBS İşlemleri">
+                <option value="BertarafGirişRapor">
+                <option value="Nakliye Raporu">
+                <option value="Fatura Süreç Takip">
+                <option value="Deniz Hiz. K.B.B Rapor">
+                <option value="Alt Yapı Tanımları">
+                <option value="Stok Kartı Talep Formu">
+                <option value="Satınalma Talep">
+                <option value="Talep Listesi">
+                <option value="Teslim Süreci">
+                <option value="Tedarikçi Değerlendirme">
+                <option value="Hizmet Alım Talep Formu">
+                <option value="NACSOFT Destek">
+                <option value="Hafta Sonu Çalışma Programı">
+                </datalist>
+
+                <label>Klasör Alt Erişimi 4:</label>   
+                <input list="erisimler4" name="erisim4" id="erisim4">
+
+                <datalist id="erisimler4">
+                <option value="İzaydaş İzin Raporu">
+                <option value="Personel Destek İzin Raporu">
+                <option value="Giden Evrak Raporu">
+                <option value="Gelen Evrak Raporu">
+                <option value="Alınma Şekli">
+                <option value="Numune Alma Metotları">
+                <option value="Numune Alan Kişiler">
+                <option value="Geliş Şekli">
+                <option value="Analiz Fiyat Güncelleme">
+                <option value="Fiyat Teklifi Hazırla (EBYS)">
+                <option value="İskonto Oranları">
+                <option value="Firma Fiyat Teklif Formu">
+                <option value="Fiyat Teklifi Notları">
+                <option value="Nakliye Fiyat Güncelleme">
+                <option value="Atık Kabul Kriterleri">
+                <option value="EK-A Notları">
+                <option value="Envanter Raporları">
+                <option value="Alım Usulü Yönetimi">
+                <option value="İşin Niteliği Yönetimi">
+                <option value="Yatırım Tanımlama Yönetimi">
+                <option value="Görevlendirilmiş Personel Listesi">
+                <option value="Güncel Döviz Kurları">
+                <option value="Tüm Satınalma Talepleri">
+                <option value="Birimlere Göre Talep Fat. Miktarı">
+                <option value="Bakanlık Raporu">
+                <option value="Performans Raporu">
+                <option value="EYS Perfromans">
+                <option value="Satınalmalar Teklif Sonrası">
+                <option value="Satınalma Taleplerim">
+                <option value="Genel Rapor">
+                <option value="Mal \ Hizmet Kabul">
+                <option value="Mal \ Hizmet Kabul Fatura">
+                <option value="Acil Satınalma Talepleri">
+                <option value="Acil Satınalma Talepleri Kalem Kalem">
+                <option value="Birimlere Göre Dosya Miktar Tutarı">
+                <option value="İptal Edilen Alımlar">
+                <option value="Tedarikçi Listesi">
+                <option value="Tüm Hizmet Alım Talepleri">
+                <option value="Hizmet Alım Taleplerim">
+                <option value="Genel Rapor Hizmet">
+                <option value="Performans Raporu">
+                <option value="Hafta Sonu Çalışma Programı Raporu">
+                </datalist>
+
+                <label>Erişim Yetkisi:</label><br>
+                <form style="text-align: justify; padding-left: 60px;">
+                    <input type="checkbox" class="check" id="yetki" name="yetki" value="DEĞİŞİKLİK YAPMA">
+                    <label for="yetki" class="labelcheck">DEĞİŞİKLİK YAPMA</label><br>
+                    <input type="checkbox" class="check" id="yetki1" name="yetki1" value="KAYIT/YEDEK ALMA">
+                    <label for="yetki1" class="labelcheck">KAYIT/YEDEK ALMA</label><br>
+                    <input type="checkbox" class="check" id="yetki2" name="yetki2" value="OKUMA/GÖRME">
+                    <label for="yetki2" class="labelcheck">OKUMA/GÖRME</label><br>
+                    <input type="checkbox" class="check" id="yetki3" name="yetki3" value="YAZMA">
+                    <label for="yetki3" class="labelcheck">YAZMA</label><br><br>
+                    <input type="submit" value="TAMAM">
+                </form>
+
+                <label>Erişim Tarihi:</label>
+                <input type="date" id="date">
+
+                <label>Klasör Sahibi:</label>
+                <input list="sahipler" name="sahip" id="sahip">
+
+                <datalist id="sahipler">
+                <option value="ABDULHALİM ÇAKIROĞLU">
+                <option value="ABDÜLKADİR ATAŞ">
+                <option value="ADEM KARAMAN">
+                <option value="ADIL YAĞUZDOGAN">
+                <option value="AHİNAY IŞIK">
+                <option value="AHMET ALTAŞ">
+                <option value="AHMET AYDIN">
+                <option value="AHMET CANDANOĞLU">
+                <option value="AHMET ÇELİK">
+                <option value="AHMET ÖZGÖREN">
+                <option value="ALİ DEMİR">
+                <option value="ALİ KARAKUŞ">
+                <option value="ALİ KAYHAN">
+                <option value="ALİ OKUMAN">
+                <option value="ALP TUNCEL">
+                <option value="ANIL KAYA">
+                <option value="ARZU ULUTAŞ SOYTÜRK">
+                <option value="ASİYE KARANLIK ÇAKAR">
+                <option value="ASUMAN KURT BAŞAVCI">
+                <option value="AYDIN BAŞER">
+                <option value="AYFER ÇALIK NEFESOĞLU">
+                <option value="AYHAN KÖKTÜRK">
+                <option value="AYKUT EFE">
+                <option value="AYNUR YAMA">
+                <option value="AYSUN SARAÇ">
+                <option value="BAHADIR KATICA">
+                <option value="BAHATTİN FATİH KESKİN">
+                <option value="BARIŞ ŞAHİN">
+                <option value="BAYRAM KARAKUŞ">
+                <option value="BEHLÜL ÇELİKÖZ">
+                <option value="BERTAN GÖRHAN">
+                <option value="BILGE ADIR GIRGIN">
+                <option value="BİLAL BAYRAM">
+                <option value="BİRCAN SOYSAL">
+                <option value="BURAK KAYABAŞI">
+                <option value="BURAK KUTLUER">
+                <option value="BURAK UZUNER">
+                <option value="BURÇAK BURÇİN ONAT">
+                <option value="BURHAN MERTOĞLU">
+                <option value="BÜLENT AKYÜZ">
+                <option value="BÜLENT DURAN">
+                <option value="BÜLENT GÜNEŞ">
+                <option value="BÜLENT ÖZDEMİR">
+                <option value="BÜLENT YANAR">
+                <option value="CAFER ALTINTAŞ">
+                <option value="CAVİT YILDIZ">
+                <option value="CEM ERGEZER">
+                <option value="CEMAL SAVAŞ">
+                <option value="CEMİL AKSU">
+                <option value="CEMİL YILDIRIMER">
+                <option value="CESİM AYDIN">
+                <option value="CEVAT AKBULUT">
+                <option value="CEYHUN KUZU">
+                <option value="CİHAN ACAR">
+                <option value="COŞKUN ASLAN">
+                <option value="DAVUT AY">
+                <option value="DOĞUŞ TÜRKDOĞAN DEMİR">
+                <option value="ELİF BAŞYİĞİT">
+                <option value="ELİF OLGUN">
+                <option value="EMİN ERDEM">
+                <option value="ENDER AKDENİZ">
+                <option value="ENGİN AYSU">
+                <option value="ERCAN AZAK">
+                <option value="ERDEM ÖCAL">
+                <option value="ERDİNÇ ÖNAL">
+                <option value="ERGİN UZUN">
+                <option value="ERGÜN ANKAZ">
+                <option value="ERGÜN SAVAŞ">
+                <option value="ERKAN AKDAĞ">
+                <option value="ERKAN BAYSAL">
+                <option value="ERKAN BULUT">
+                <option value="ERKAN KARATAŞ">
+                <option value="ERKAN KURHAN">
+                <option value="ERKAN ÖZÖN">
+                <option value="ERKAN YILDIRIM">
+                <option value="EROL ASLAN">
+                <option value="EROL GÖÇENLER">
+                <option value="EROL MEMİŞ">
+                <option value="EROL ŞAR">
+                <option value="ERSİN ELYEĞİT">
+                <option value="ERSOY KULU">
+                <option value="ESRA UĞURLU">
+                <option value="ETEM YILMAZ">
+                <option value="EVSEN KOSEM">
+                <option value="EYÜP KAYA">
+                <option value="FAHRETTİN ALP">
+                <option value="FAHRİ DENLİ">
+                <option value="FATIMA AKBOLAT">
+                <option value="FATİH RAMAZANOĞLU">
+                <option value="FATMA ÇELİK">
+                <option value="FERAMUZ ÇELİK">
+                <option value="FERHAT AYDIN">
+                <option value="FERHAT KALKAVAN">
+                <option value="FERHAT YILDIZ">
+                <option value="FERİK BALKİ">
+                <option value="FETHİ ÖZDEMİR">
+                <option value="FETİ TUTAR">
+                <option value="FİKRET KARA">
+                <option value="FİKRET SEZEN">
+                <option value="FİKRİ AY">
+                <option value="FURKAN ÖZTÜRK">
+                <option value="GAFFAR ÇAMUR">
+                <option value="GAMZE GOZDE TURKERI GULSUM">
+                <option value="GANİ ÇAPRAZ">
+                <option value="GÖKHAN TİLKİ">
+                <option value="GÜLAY İNOĞLU">
+                <option value="GÜLAY KARA YÜKSEL">
+                <option value="GÜNEY DİNÇ">
+                <option value="GÜNGÖR ÖZDEMİR">
+                <option value="GÜRKAN SAZ">
+                <option value="HAKAN BUGAN">
+                <option value="HAKAN NURİ AVCI">
+                <option value="HAKAN UYAR">
+                <option value="HALİL İBRAHİM TÜRK">
+                <option value="HALİL YAZICIOĞLU">
+                <option value="HALİS ÖNER">
+                <option value="HALİT ELAGÖZ">
+                <option value="HALUK ÖZTURKAN">
+                <option value="HARUN KILIÇ">
+                <option value="HARUN ÖZTÜRK">
+                <option value="HASAN DEMİRHAN">
+                <option value="HAŞİM OKUTKAN">
+                <option value="HAYRETTİN DEMİRER">
+                <option value="HAYRETTİN DUMAN">
+                <option value="HELİN YILDIRIM ESENLİK">
+                <option value="HÜSEYİN ÇELİK">
+                <option value="HÜSEYİN EROL">
+                <option value="HÜSEYİN ONUR">
+                <option value="HÜSEYİN ÖKSÜZ">
+                <option value="HÜSEYİN YEŞİL">
+                <option value="İBRAHİM AKBUĞA">
+                <option value="İBRAHİM BAŞYİĞİT">
+                <option value="İBRAHİM BAYRAK">
+                <option value="İBRAHİM CEM OKANALP">
+                <option value="İBRAHİM ŞAHİN">
+                <option value="İBRAHİM TAŞ">
+                <option value="İDRİS DURMAZ">
+                <option value="İDRİS ERGÜN">
+                <option value="İSKENDER AKGÜL">
+                <option value="İSMAİL AKBAŞ">
+                <option value="İSMAİL AYDIN">
+                <option value="İSMAİL HAKKI ÜSTÜN">
+                <option value="İSMAİL ŞAHİN">
+                <option value="İSMAİL ULUDAĞ">
+                <option value="KADİR AKBAŞ">
+                <option value="KADİR ÖZTÜRK">
+                <option value="KAZIM ATALAY">
+                <option value="KEMAL USTA">
+                <option value="KENAN HENDEN">
+                <option value="KENAN IYIDOGAN">
+                <option value="KISMET ÖNEN">
+                <option value="MAHMUT KARAASLAN">
+                <option value="MAHMUT KILDIZE">
+                <option value="MEHMET BAYRAM">
+                <option value="MEHMET ÇELİK">
+                <option value="MEHMET EMİN AYDEMİR">
+                <option value="MEHMET KURNAZ">
+                <option value="MEHMET NURİ ÜNSAL">
+                <option value="MEHMET SOLMAZ">
+                <option value="MEHMET ŞAHİN">
+                <option value="MEHMET YILMAZ">
+                <option value="MESUT BAŞARIR">
+                <option value="METİN ÖZÇETİN">
+                <option value="MUHAMMED KARA">
+                <option value="MUHAMMET ÇALIŞ">
+                <option value="MUHAMMET ENES AKBULUT">
+                <option value="MUHAMMET SARAÇ">
+                <option value="MUHARREM ALACI">
+                <option value="MURAT ARSLAN">
+                <option value="MURAT ATAGAN">
+                <option value="MURAT BAŞTÜRK">
+                <option value="MURAT BAYRAM">
+                <option value="MURAT KARAASLAN">
+                <option value="MURAT KILIÇ">
+                <option value="MURAT KURT">
+                <option value="MURAT ÖZKAN AYTAÇ">
+                <option value="MURAT RECEP AKAR">
+                <option value="MUSA BEKİL">
+                <option value="MUSTAFA BEKTAŞ">
+                <option value="MUSTAFA CİVELEK">
+                <option value="MUSTAFA ÇİFÇİ">
+                <option value="MUSTAFA DEMİR">
+                <option value="MUSTAFA DEMİRTAŞ">
+                <option value="MUSTAFA DİLAVER">
+                <option value="MUSTAFA HAKAN ELMAS">
+                <option value="MUSTAFA KAYA">
+                <option value="MUSTAFA ÖZTÜRK">
+                <option value="MUSTAFA SİRMEN">
+                <option value="MUSTAFA ŞAKAR">
+                <option value="MUSTAFA YILDIRIM">
+                <option value="NAİL BALCI">
+                <option value="NAMIK KAYA">
+                <option value="NEBİ KILIÇ">
+                <option value="NECATİ BOSTAN">
+                <option value="NİZAMETTİN KARADUMAN">
+                <option value="NİZAMETTİN ÖZTÜRK">
+                <option value="NİZAMETTİN SİNAN BİNBAY">
+                <option value="NURHAN ORGAN KELEŞ">
+                <option value="NURKAN KOLAY">
+                <option value="NURULLAH DURAL">
+                <option value="NUSRET KARAKAYA">
+                <option value="OKAN ÖZ">
+                <option value="ONUR ULUDAĞ">
+                <option value="ORAL TEKYAZ">
+                <option value="ORHAN AKARSU">
+                <option value="ORHAN KORKMAZ">
+                <option value="ORHAN KURTOĞLU">
+                <option value="ÖMER FERKAN KEMİK">
+                <option value="ÖNDER KORKMAZ">
+                <option value="ÖZCAN ŞAKAR">
+                <option value="ÖZGE GÖKDEN">
+                <option value="ÖZGÜR TORAMAN">
+                <option value="ÖZKAN ÖZKANLI">
+                <option value="ÖZLEM ERKAL DİZMAN">
+                <option value="ÖZNUR DİNÇ ATASOY">
+                <option value="PINAR ATABAY">
+                <option value="RAMAZAN KARABOĞA">
+                <option value="RECEP ERGAM CİVELEK">
+                <option value="RECEP ERMİŞ">
+                <option value="RECEP KARAGÖZ">
+                <option value="RECEP KARTAL">
+                <option value="RECEP ŞİNASİ YILDIZ">
+                <option value="RECEP ÜRETİR">
+                <option value="RESUL SAVUR">
+                <option value="RIDVAN ŞAHİN">
+                <option value="SACETTİN KULA">
+                <option value="SALİH AYHAN">
+                <option value="SALİH DEVECİ">
+                <option value="SALİH KARADENİZ">
+                <option value="SALİH ORHAN GÜNCAN">
+                <option value="SALİH ŞAHİN">
+                <option value="SAVAŞ AKPOLAT">
+                <option value="SEDAT DİNÇ">
+                <option value="SELÇUK ASLAN">
+                <option value="SELÇUK SERİN">
+                <option value="SELÇUK YILDIRIM">
+                <option value="SELMAN ŞEKERSOY">
+                <option value="SERKAN ERGÜL">
+                <option value="SERKAN YOLDADURMAZ">
+                <option value="SEVİLAY DEĞER">
+                <option value="SEYFETTİN CEYHAN">
+                <option value="SEZGİN ÇAKAR">
+                <option value="SEZGİN DEMİRÖZ">
+                <option value="SEZGİN ÜZMEZ">
+                <option value="SİNAN AYAZ">
+                <option value="SONER TURAN">
+                <option value="SONGÜL GENÇ">
+                <option value="SUAT ŞIK">
+                <option value="SUNA ÖZDENİZER">
+                <option value="ŞAHAN DEDE">
+                <option value="ŞENAY ÇINAR">
+                <option value="ŞENOL ALTIN">
+                <option value="ŞEVKET KARAASLAN">
+                <option value="ŞÜKRÜ KAYA">
+                <option value="TALİP BURNAZ">
+                <option value="TARIK ANLAYAN">
+                <option value="TAYFUN KARA">
+                <option value="TEKİN AKYOL">
+                <option value="TUĞBA RAKAN">
+                <option value="TUNCAY AKÇAY">
+                <option value="TURAN ÇAKAR">
+                <option value="UMUR GÜRDAL">
+                <option value="ÜMİT GENÇ">
+                <option value="ÜMİT ÖRNEK">
+                <option value="VEDAT AKTAŞ">
+                <option value="YALÇIN AKKUŞ">
+                <option value="YASİN ÖZDEMİR">
+                <option value="YAŞAR TAŞDEMİR">
+                <option value="YAVUZ TEKMİL">
+                <option value="YILDIRAY DELİOĞLU">
+                <option value="YUNUS DURGUN">
+                <option value="YUNUS EMRE AYVAZ">
+                <option value="YUNUS ÖZDİL">
+                <option value="YUSUF KESİM">
+                <option value="YUSUF YAZICI">
+                <option value="YÜKSEL ARI">
+                <option value="ZAFER GÜDÜK">
+                <option value="ZAFER KAYI">
+                <option value="ZAFER MACİT">
+                <option value="ZAFER SERT">
+                <option value="ZAFER YALÇIN">
+                <option value="ZEKERİYA SUBAŞI">
+                <option value="ZEKERİYE ALMAZ">
+                <option value="ZEYNEP SARI">  
+                </datalist>
+
+                <label for="aciklama">Açıklama:</label>
+                <textarea id="aciklama" name="aciklama"></textarea>
+
+                <button id="ekle-btn">EKLE</button>
+
+            </div>
+           
+        <script>
+
+            let myLeads = [];
+            
+            const ad = document.getElementById("ad");
+            const erisim = document.getElementById("erisim");
+            const erisim1 = document.getElementById("erisim1");
+            const erisim2 = document.getElementById("erisim2");
+            const erisim3 = document.getElementById("erisim3");
+            const erisim4  = document.getElementById("erisim4");
+            const yetki = document.getElementById("yetki");
+            const yetki1  = document.getElementById("yetki1");
+            const yetki2  = document.getElementById("yetki2");
+            const yetki3 = document.getElementById("yetki3");
+            const date = document.getElementById("date");
+            const sahip = document.getElementById("sahip");
+            const aciklama = document.getElementById("aciklama");
+            const ekleBtn =document.getElementById("ekle-btn");
+           
+            const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+            //kayıtlıları kapatıp açtıktan sonra hala gösterir
+            if(leadsFromLocalStorage){        
+                myLeads = leadsFromLocalStorage;
+
+            }
+
+            //eleman ekler
+            ekleBtn.addEventListener("click", function(){
+                
+                myLeads.push(ad.value);
+                myLeads.push(erisim.value);
+                myLeads.push(erisim1.value);
+                myLeads.push(erisim2.value);
+                myLeads.push(erisim3.value);
+                myLeads.push(erisim4.value);
+                myLeads.push(yetki.value);
+                myLeads.push(yetki1.value);
+                myLeads.push(yetki2.value);
+                myLeads.push(yetki3.value);
+                myLeads.push(date.value);
+                myLeads.push(sahip.value);
+                myLeads.push(aciklama.value);
+                    
+                ad.value = "";
+                erisim.value = "";
+                erisim1.value = "";
+                erisim2.value = "";
+                erisim3.value = "";
+                erisim4.value = "";
+                yetki.value = "";
+                yetki1.value = "";
+                yetki2.value = "";
+                yetki3.value = "";
+                date.value = "";
+                sahip.value = "";
+                aciklama.value = "";
+                
+                localStorage.setItem("myLeads", JSON.stringify(myLeads));
+            
+                ad.focus();
+
+            });
+                
+        </script>
+
+    </body>
+</html>
+
+ 
