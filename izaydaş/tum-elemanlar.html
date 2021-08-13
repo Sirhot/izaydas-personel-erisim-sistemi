@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tüm erişimler</title>
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+        
+        *{
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        body{
+            background-image:url(https://picsum.photos/2000/2000);
+            background-size:cover;
+        }
+
+        #sayfa{
+        min-width: 1500px;
+        margin:auto 20%;
+        background: rgba( 0, 0, 0, 0.85 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 4.0px );
+        -webkit-backdrop-filter: blur( 4.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        padding:20px;
+        min-height: 600px;
+        text-align: center;
+        color:white;
+        }
+
+        label{
+        display:block;
+        margin-top:5px;
+
+        }
+
+        input{
+        border:solid 2px #1B9CFC;
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        height:30px;
+        width:70%;
+        border-radius: 40px;
+        transition: 0.2s ease-in;
+        color:white;
+
+        }
+
+        input:focus{
+        width:80%;
+        border:solid 2px #55E6C1;
+
+        }
+
+        button{
+        background: none;
+        text-align: center;
+        outline: none;
+        padding: 10px;
+        margin:20px;
+        border:solid 2px #55E6C1;
+        box-sizing: border-box;
+        height:50px;
+        width:40%;
+        border-radius: 40px;
+        color:white;
+        cursor: pointer;
+    
+        }
+
+        button:hover{
+            background-color: #55E6C1;
+        }
+
+        table{
+        background: none;
+        margin: auto;
+        width: 100%;
+        color:white;
+        border-collapse: collapse;
+        }
+
+        td,th{
+        border:1px solid #55E6C1;
+        border-spacing: 0px;
+        margin: 0;
+        min-width: 100px;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background: rgba( 0, 0, 0, 0.85 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4.0px );
+            -webkit-backdrop-filter: blur( 4.0px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        #logo{
+            background-color: #818181;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            height:100px;
+            width:250px;
+            border-radius: 10px;
+        }
+
+        #logo:hover{
+            background-color: #f1f1f1;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a{
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width:100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* On mouse-over */
+        .sidenav a:hover{
+            color: #f1f1f1;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="sidenav">  
+        <div id="logo">
+            <img style="width:100px;" src="izaydas.png" alt="İZAYDAŞ">
+        </div>  
+        <a href="tum-elemanlar.html">Erişimleri Görüntüle</a>
+        <a href="eleman-ekle.html">Erişim Ekle</a>
+        <a href="eleman-sil.html">Erişim Sil</a>
+        <a href="eleman-ara.html">Erişim Ara</a>        
+        <a href="kullanıcı.html">Çıkış</a>
+    </div>
+    
+    <div id="sayfa">
+
+        <table id="liste"></table>
+
+    </div>
+
+        <script>
+
+            let myLeads = [];
+
+            const liste=document.getElementById("liste");
+            const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+            //kayıtlıları kapatıp açtıktan sonra hala gösterir
+            if(leadsFromLocalStorage){        
+                myLeads = leadsFromLocalStorage;
+                render(myLeads);
+
+            }
+
+            //tabloyu gösterir
+            function render(leads){
+                let listItems = `
+                    <tr>
+                        <th>Adı Soyadı</th>
+                        <th>Erişim Adı</th>
+                        <th>Klasör Alt Erişimi 1</th>
+                        <th>Klasör Alt Erişimi 2</th>
+                        <th>Klasör Alt Erişimi 3</th>
+                        <th>Klasör Alt Erişimi 4</th>
+                        <th>Erişim Yetkisi</th>
+                        <th>Erişim Tarihi</th>
+                        <th>Klasör Sahibi</th>
+                        <th>Açıklama</th>
+                    </tr>
+                `;
+    
+                for (let i = 0; i < leads.length; i+=13) {    
+    
+                    listItems += `
+                    <tr>
+                        <td>
+                            ${leads[i]}
+                        </td>
+                        <td>
+                            ${leads[i+1]}
+                        </td>
+                        <td>
+                            ${leads[i+2]}
+                        </td>
+                        <td>
+                            ${leads[i+3]}
+                        </td>
+                        <td>
+                            ${leads[i+4]}
+                        </td>
+                        <td>
+                            ${leads[i+5]}
+                        </td>
+                        <td>
+                            ${leads[i+6]};${leads[i+7]};${leads[i+8]};${leads[i+9]}
+                        </td>
+                        <td>
+                            ${leads[i+10]}
+                        </td>
+                        <td>
+                            ${leads[i+11]}
+                        </td>
+                        <td>
+                            ${leads[i+12]}
+                        </td>
+                    </tr>
+                    `;
+                }
+
+                liste.innerHTML = listItems;
+
+            }
+
+                
+        </script>
+
+    </body>
+</html>
+
+ 

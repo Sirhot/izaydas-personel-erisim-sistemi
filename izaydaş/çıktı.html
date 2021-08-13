@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Erişimi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+        *{
+        font-family: 'Noto Sans', sans-serif;
+
+        }
+        body{
+            text-align: center;
+        }
+
+        #izaydas{
+            width: 200px;
+            margin-bottom: 6%;
+        }
+        
+        #sayfa{
+            width: 80%;
+            height: 100%;
+            margin: auto;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <img id="izaydas" src="izaydas.png" alt="İZAYDAŞ"> 
+    
+    <div id="sayfa">
+
+    </div>
+
+    <input style="width: 200px; height: 50px; border:none; margin-top: 5%;" type="button" onclick="window.print()" value="İZAYDAŞ">
+
+    <script>
+        let myLeads = [];
+
+        const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+        const cikti = JSON.parse(localStorage.getItem("cikti"));
+
+        if(leadsFromLocalStorage){        
+            myLeads = leadsFromLocalStorage;
+        }
+
+        for(let i = 0; i < myLeads.length; i+=13){
+            if(cikti === myLeads[i]){
+                document.getElementById("sayfa").innerHTML+=`
+                            <div style=" background-color:none;">
+                            <p>ADI SOYADI: ${myLeads[i]}</p>
+                            <p>ERİŞİMLERİ:</p>
+                            </div>
+
+                        `;
+                break;
+            }
+
+        }
+
+        for(let i = 0; i < myLeads.length; i+=13){
+
+            if(cikti === myLeads[i]){
+
+                document.getElementById("sayfa").innerHTML+=`
+                            <div style=" background-color:none; margin-top:6%;">
+                            ${myLeads[i]} <br><br>-ERİŞİM ADI: ${myLeads[i+1]} <br><br>-KLASÖR ALT ERİŞİMLERİ: ${myLeads[i+2]} - ${myLeads[i+3]} - ${myLeads[i+4]} - ${myLeads[i+5]} <br><br>-ERİŞİM YETKİSİ:
+                            ${myLeads[i+6]};  ${myLeads[i+7]};  ${myLeads[i+8]}; ${myLeads[i+9]}; <br><br>-ERİŞİM TARİHİ: ${myLeads[i+10]} <br><br>-KLASÖR SAHİBİ: ${myLeads[i+11]} <br><br>- AÇIKLAMA: ${myLeads[i+12]}
+                            </div>
+
+                        `;
+            }
+        }
+
+        localStorage.setItem("cikti", "");
+
+
+    </script>
+</body>
+</html>
